@@ -1,0 +1,21 @@
+import { expect } from '@jest/globals';
+import orderByProps from '../orderFunc';
+
+test('should sort unit properties by order', () => {
+  const unit = {
+    name: 'мечник',
+    health: 10,
+    level: 2,
+    attack: 80,
+    defence: 40,
+  };
+  const received = orderByProps(unit, ['name', 'level']);
+  const expected = [
+    { key: 'name', value: 'мечник' },
+    { key: 'level', value: 2 },
+    { key: 'attack', value: 80 },
+    { key: 'defence', value: 40 },
+    { key: 'health', value: 10 },
+  ];
+  expect(received).toEqual(expected);
+});
